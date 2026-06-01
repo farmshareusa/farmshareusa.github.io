@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import { siteConfig } from '@/config/site';
+import { EngravedDefs } from '@/components/EngravedDefs';
+import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteClient } from '@/components/SiteClient';
 import './globals.css';
 
 const fraunces = Fraunces({
@@ -38,9 +42,7 @@ export const metadata: Metadata = {
     images: ['/images/Image_S17.png'],
   },
   icons: {
-    icon: [
-      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
-    ],
+    icon: [{ url: '/icon.png', type: 'image/png', sizes: '512x512' }],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
 };
@@ -48,7 +50,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <EngravedDefs />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <SiteClient />
+      </body>
     </html>
   );
 }

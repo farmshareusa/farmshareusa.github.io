@@ -2,10 +2,18 @@
 
 import { useEffect } from 'react';
 
-export function HomeClient() {
+/**
+ * Global interactions that should run on every page:
+ * - sticky header scroll state
+ * - scroll-reveal animations
+ * - footer newsletter submit
+ * - mobile burger menu
+ * - pollen particles in any [data-pollen] container
+ * - count-up for any [data-count] number
+ */
+export function SiteClient() {
   useEffect(() => {
     const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const cleanups: Array<() => void> = [];
 
     // sticky header
@@ -38,14 +46,6 @@ export function HomeClient() {
         box.appendChild(s);
       }
     });
-
-    // germination motion on hero
-    if (!RM) {
-      const seal = document.querySelector('.hero-seal');
-      const wm = document.querySelector('.hero-watermark');
-      if (seal) seal.classList.add('seal-rise');
-      if (wm) wm.classList.add('wm-rise');
-    }
 
     // scroll reveal
     const io = new IntersectionObserver(
@@ -88,50 +88,6 @@ export function HomeClient() {
     );
     document.querySelectorAll('[data-count]').forEach((el) => cio.observe(el));
     cleanups.push(() => cio.disconnect());
-
-    // membership toggle
-    const mt = document.getElementById('memToggle');
-    if (mt) {
-      const buttons = Array.from(mt.querySelectorAll<HTMLButtonElement>('button'));
-      const handlers: Array<[HTMLButtonElement, () => void]> = [];
-      buttons.forEach((b) => {
-        const h = () => {
-          buttons.forEach((x) => x.classList.remove('on'));
-          b.classList.add('on');
-          const yr = b.dataset.p === 'yr';
-          document.querySelectorAll<HTMLElement>('.tier .amt b').forEach((el) => {
-            el.textContent = yr ? el.dataset.yr! : el.dataset.mo!;
-          });
-        };
-        b.addEventListener('click', h);
-        handlers.push([b, h]);
-      });
-      cleanups.push(() => handlers.forEach(([b, h]) => b.removeEventListener('click', h)));
-    }
-
-    // lead form (local validation only — wire to provider via config/site.ts)
-    const form = document.getElementById('leadForm') as HTMLFormElement | null;
-    if (form) {
-      const email = document.getElementById('leadEmail') as HTMLInputElement | null;
-      const msg = document.getElementById('leadMsg');
-      const onSubmit = (ev: Event) => {
-        ev.preventDefault();
-        if (!email || !msg) return;
-        const v = (email.value || '').trim();
-        const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
-        if (!ok) {
-          msg.style.color = 'var(--clay)';
-          msg.textContent = 'Please enter a valid email address.';
-          email.focus();
-          return;
-        }
-        msg.style.color = 'var(--gold)';
-        msg.textContent = '✓ Check your inbox — the plan is on its way.';
-        email.value = '';
-      };
-      form.addEventListener('submit', onSubmit);
-      cleanups.push(() => form.removeEventListener('submit', onSubmit));
-    }
 
     // footer newsletter
     const footHandlers: Array<[HTMLButtonElement, () => void]> = [];
@@ -190,49 +146,6 @@ export function HomeClient() {
         burger.removeEventListener('click', onBurger);
         linkHandlers.forEach(([a, h]) => a.removeEventListener('click', h));
       });
-    }
-
-    // co-op living mini-map
-    const net = document.getElementById('netSvg');
-    if (net && !net.innerHTML.trim()) {
-      const nodes: [number, number, number][] = [
-        [12, 52, 1], [24, 34, 1.3], [31, 62, 1], [42, 26, 1], [47, 50, 1.6],
-        [55, 66, 1], [62, 40, 1.2], [70, 56, 1], [77, 32, 1.1], [85, 48, 1],
-        [38, 74, 0.9], [66, 20, 0.9], [18, 70, 0.9],
-      ];
-      const links: [number, number][] = [
-        [0, 1], [1, 2], [1, 3], [3, 4], [4, 5], [4, 6], [6, 7], [7, 8], [8, 9],
-        [6, 8], [2, 4], [3, 11], [0, 12], [5, 10],
-      ];
-      const grd = `<defs><radialGradient id="ng" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F0C063"/><stop offset="100%" stop-color="#D9A441" stop-opacity="0"/></radialGradient></defs>`;
-      let html = grd + '<g stroke="#D9A441" stroke-width=".3" fill="none" opacity=".55">';
-      links.forEach(([a, b], i) => {
-        const [x1, y1] = nodes[a];
-        const [x2, y2] = nodes[b];
-        html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke-dasharray="2 3" style="animation:dashFlow ${3 + (i % 4)}s linear infinite"/>`;
-      });
-      html += '</g>';
-      nodes.forEach(([x, y, s], i) => {
-        html +=
-          `<g transform="translate(${x} ${y})">` +
-          `<circle r="${s * 2.4}" fill="url(#ng)" opacity=".5"/>` +
-          (i % 3 === 0
-            ? `<circle r="1" fill="none" stroke="#F0C063" stroke-width=".4" style="animation:ringPulse ${2.6 + (i % 3)}s ease-out ${i * 0.2}s infinite"/>`
-            : '') +
-          `<circle r="${s * 0.9}" fill="#F0C063" style="animation:nodePulse ${2.4 + (i % 4) * 0.4}s ease-in-out ${i * 0.15}s infinite"/></g>`;
-      });
-      net.innerHTML = html;
-    }
-
-    // hero video: gate by reduced motion + mobile
-    const heroVideo = document.querySelector<HTMLVideoElement>('.hero-photo video');
-    if (heroVideo) {
-      if (RM || window.innerWidth <= 860) {
-        heroVideo.removeAttribute('autoplay');
-        heroVideo.pause();
-      } else {
-        heroVideo.play().catch(() => {});
-      }
     }
 
     return () => cleanups.forEach((fn) => fn());
