@@ -41,3 +41,6 @@ next-env.d.ts
 # internal docs (not for public repo)
 CLAUDE.md
 FarmShareUSA_Plan.txt
+
+# design handoff bundle (extracted locally for reference only)
+.design-bundle/

@@ -37,11 +37,22 @@ Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the s
 
 Site-wide constants live in [`config/site.ts`](./config/site.ts). Email provider IDs, analytics IDs, and checkout URLs are placeholders — fill them in there, not in component files. **Do not commit secrets** — use environment variables or public embed IDs only.
 
+## Design & assets
+
+The visual design is produced in **Claude Design** and handed off to Claude Code to implement on this scaffold. Start here:
+
+- **`CLAUDE.md` §15** — build state + the asset-handoff checklist for Claude Code (read first).
+- **`assets/ASSET-MANIFEST.md`** — every image/video mapped to its page/section (placement source of truth).
+- **`CLAUDE-DESIGN-BUILD-PROMPT.md`**, **`claude-design-brief.md`**, **`logo-concepts.md`**, **`asset-prompt-pack.md`** — design brief, intent, logo, and how assets were made.
+
+Real assets live in `assets/` (`stills/`, `start-frames/`, `video/`, `Logos/`). When implementing the design, **import them into `public/` per the manifest** (stills → `public/images/`, videos → `public/video/` with start-frames as posters). Header logo = `Logo_L1`; favicon/seal = `Favicon_B`.
+
 ## Project structure
 
 ```
 app/               # Next.js App Router routes
-config/            # Site config and constants
-public/            # Static assets (favicon, CNAME, .nojekyll)
+config/            # Site config and constants (email provider, analytics — fill in here)
+assets/            # Source image/video/logo library + ASSET-MANIFEST.md (import into public/ at build)
+public/            # Static assets served as-is (favicon, CNAME, .nojekyll, images/, video/)
 .github/workflows/ # GitHub Actions deploy pipeline
 ```

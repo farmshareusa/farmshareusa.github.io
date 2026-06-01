@@ -29,13 +29,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.siteName} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     url: siteConfig.url,
+    images: [{ url: '/images/Image_S17.png', width: 1600, height: 900, alt: siteConfig.siteName }],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${siteConfig.siteName} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: ['/images/Image_S17.png'],
   },
-  icons: { icon: '/favicon.ico' },
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
