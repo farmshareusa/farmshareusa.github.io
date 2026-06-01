@@ -172,23 +172,29 @@ export default function HomePage() {
             <div className="quote reveal">
               <div className="mark">&ldquo;</div>
               <blockquote>
-                We went from a bare suburban lawn to feeding our family of four out of the
-                backyard in one season. The plan made it feel inevitable, not impossible.
+                Founding members coming soon. We&apos;re a charter-year movement &mdash;
+                be one of the first families on the map, and your story (and your
+                before/after) could be here next season.
               </blockquote>
               <div className="who">
-                <div className="av">PHOTO<br />S__</div>
+                <div className="av" aria-hidden="true">
+                  <svg viewBox="0 0 100 110"><use href="#mark" /></svg>
+                </div>
                 <div>
-                  <b>[ Member name ]</b>
-                  <span>Quarter-acre lot · Ohio</span>
+                  <b>Founding members</b>
+                  <span>Charter year · 2026</span>
                 </div>
               </div>
+              <a href="/start/" className="btn btn-secondary" style={{ marginTop: 18 }}>
+                Become a founding family
+              </a>
             </div>
             <div className="proof-col">
               <div className="ba reveal d1">
                 <span className="lbl">Before / After</span>
                 <div className="row">
-                  <div className="cell"><span className="fn">Member submission</span></div>
-                  <div className="cell"><span className="fn">Member submission</span></div>
+                  <div className="cell"><span className="fn">Your story</span></div>
+                  <div className="cell"><span className="fn">Your first harvest</span></div>
                 </div>
                 <span className="cap">Bare lawn → four-season garden</span>
               </div>
@@ -200,25 +206,20 @@ export default function HomePage() {
                     color: 'var(--green)',
                     lineHeight: 1,
                   }}
-                  data-count="89"
+                  aria-hidden="true"
                 >
-                  0
+                  30
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, color: 'var(--green)' }}>% of members</div>
+                  <div style={{ fontWeight: 600, color: 'var(--green)' }}>A 30-day plan, not a 30-day promise.</div>
                   <div style={{ fontSize: 13.5, color: 'color-mix(in oklab, var(--ink) 65%, transparent)' }}>
-                    harvest their first crop within 30 days of starting the plan.
+                    The plan sequences your first crops so the first harvest can land inside a
+                    month. Your timing depends on your zone and starting point &mdash; the calendar
+                    tells you which.
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="logos-row reveal">
-            <span>As featured in</span>
-            <span>— [ Outlet ] —</span>
-            <span>— [ Outlet ] —</span>
-            <span>— [ Outlet ] —</span>
-            <span>— [ Outlet ] —</span>
           </div>
         </div>
       </section>

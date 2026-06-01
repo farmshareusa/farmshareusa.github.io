@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@/components/Analytics';
 
 type Tier = {
   name: string;
@@ -118,7 +119,18 @@ export function MembershipTiers({ tiers = DEFAULT_TIERS, withFeatures = false }:
                   ))}
                 </ul>
               )}
-              <a className={`btn ${t.featured ? 'btn-primary' : 'btn-secondary'}`}>{t.cta}</a>
+              <a
+                className={`btn ${t.featured ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() =>
+                  track('membership_cta_click', {
+                    tier: t.name,
+                    billing: yr ? 'annual' : 'monthly',
+                    price,
+                  })
+                }
+              >
+                {t.cta}
+              </a>
             </div>
           );
         })}

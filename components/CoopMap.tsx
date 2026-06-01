@@ -45,7 +45,10 @@ export function CoopMap() {
   return (
     <div className="map-stage reveal d1">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/Image_S22.png" alt="" />
+      <img
+        src="/images/Image_S22.png"
+        alt="Aerial view of a suburban neighborhood used as the base layer for a stylized national co-op network map."
+      />
       <svg
         className="net"
         viewBox="0 0 100 80"
