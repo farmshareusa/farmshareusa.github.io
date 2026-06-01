@@ -5,6 +5,7 @@ import { EngravedDefs } from '@/components/EngravedDefs';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteClient } from '@/components/SiteClient';
+import { Analytics } from '@/components/Analytics';
 import './globals.css';
 
 const fraunces = Fraunces({
@@ -47,15 +48,48 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteConfig.url}/#organization`,
+      name: siteConfig.siteName,
+      url: siteConfig.url,
+      description: siteConfig.description,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/images/Logo_L1.png`,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.siteName,
+      description: siteConfig.description,
+      publisher: { '@id': `${siteConfig.url}/#organization` },
+      inLanguage: 'en-US',
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <EngravedDefs />
         <SiteHeader />
         {children}
         <SiteFooter />
         <SiteClient />
+        <Analytics />
       </body>
     </html>
   );

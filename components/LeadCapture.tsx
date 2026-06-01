@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@/components/Analytics';
 
 type Variant = 'inline' | 'card';
 
@@ -9,11 +10,13 @@ export function LeadCapture({
   buttonLabel = 'Download Free',
   placeholder = 'you@email.com',
   finePrint = "No spam. Unsubscribe anytime. We'll send a 5-day starter series with it.",
+  source = 'lead_magnet',
 }: {
   variant?: Variant;
   buttonLabel?: string;
   placeholder?: string;
   finePrint?: string;
+  source?: string;
 }) {
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
@@ -25,6 +28,7 @@ export function LeadCapture({
       setMsg({ text: 'Please enter a valid email address.', ok: false });
       return;
     }
+    track('lead_magnet_submit', { source });
     setMsg({ text: '✓ Check your inbox — the plan is on its way.', ok: true });
     setEmail('');
   };

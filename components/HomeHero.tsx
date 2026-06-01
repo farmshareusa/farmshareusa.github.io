@@ -72,11 +72,11 @@ export function HomeHero() {
               </a>
             </div>
             <div className="trust">
-              <span><b>42,000+</b> families</span>
+              <span>A growing movement</span>
               <span className="div"></span>
-              <span><b>1,300</b> co-ops</span>
+              <span>Backyards to acres</span>
               <span className="div"></span>
-              <span><b>50</b> states</span>
+              <span>All 50 states ready</span>
             </div>
           </div>
         </div>
