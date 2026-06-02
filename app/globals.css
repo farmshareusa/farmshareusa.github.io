@@ -888,11 +888,22 @@ footer.mega {
   color: color-mix(in oklab, var(--bone) 72%, transparent);
   padding: 80px 0 40px; position: relative;
 }
-.foot-orn { display: flex; justify-content: flex-end; margin-bottom: 54px; color: var(--gold); }
-.foot-orn svg { width: min(420px, 60%); height: auto; }
-@media (max-width: 640px) {
-  .foot-orn { justify-content: center; }
-  .foot-orn svg { width: 80%; }
+.foot-orn {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  column-gap: 48px;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+.foot-orn svg {
+  grid-column: 2 / -1;
+  justify-self: center;
+  width: min(420px, 80%);
+  height: auto;
+}
+@media (max-width: 860px) {
+  .foot-orn { display: flex; justify-content: center; }
+  .foot-orn svg { grid-column: auto; width: 80%; }
 }
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 48px; }
 .foot-grid h5 {
