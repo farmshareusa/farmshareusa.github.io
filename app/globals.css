@@ -1404,7 +1404,7 @@ footer.mega {
 .chatbot-launcher {
   position: relative;
   display: inline-block;
-  width: 360px; height: 420px;
+  width: 290px; height: 335px;            /* ~20% smaller than original 360×420 */
   padding: 0; margin: 0; border: 0;
   background: transparent;
   cursor: pointer;
@@ -1462,28 +1462,29 @@ footer.mega {
 }
 
 /* --- Persistent call-out ("Ask me anything!") ------------------------- */
-/* A speech-bubble pill anchored near Elizabeth's head, offset toward the
-   left so it never clips the right edge. Shows whenever the panel is
+/* A cream speech bubble that sits ABOVE Elizabeth's head and points
+   down at her with a small tail. Offset toward the LEFT so it never
+   clips the right edge of the viewport. Persists while the panel is
    closed; clicking it opens the chat. */
 .chatbot-callout {
   position: absolute;
-  right: 200px;
-  bottom: 320px;
-  z-index: 2;
+  right: 50px;                                                 /* offset LEFT from screen edge so it can't clip */
+  bottom: 350px;                                               /* sits just above Elizabeth's head (figure top ~335px) */
+  z-index: 5;                                                  /* ABOVE the launcher figure */
   display: inline-flex; align-items: center;
-  padding: 10px 18px;
-  background: var(--bone);
-  color: var(--green-deep);
-  border: 1.5px solid var(--gold);
-  border-radius: 999px;
-  font-family: 'Inter', system-ui, sans-serif;
+  padding: 10px 16px;
+  background: var(--bone);                                     /* cream box */
+  color: var(--forest);                                        /* deep forest green — explicit, NEVER black */
+  border: 1.5px solid var(--gold);                             /* thin gold border */
+  border-radius: 14px;                                         /* rounded, not full pill */
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   font-size: 14.5px; font-weight: 600; letter-spacing: 0.01em;
-  line-height: 1;
+  line-height: 1.1;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(11, 24, 18, 0.18);
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.35);            /* soft shadow per spec */
   animation: chatbot-callout-bob 3.4s ease-in-out infinite;
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 .chatbot-callout:hover {
   background: var(--gold);
@@ -1491,19 +1492,22 @@ footer.mega {
   transform: translateY(-1px);
 }
 .chatbot-callout:focus-visible {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--forest);
   outline-offset: 3px;
 }
-/* Tail pointing from the bubble toward Elizabeth's head (down + right). */
-.chatbot-callout::before {
-  content: ''; position: absolute;
-  right: -8px; bottom: 8px;
+/* Down-pointing tail from the bubble toward Elizabeth's head. */
+.chatbot-callout::after {
+  content: '';
+  position: absolute;
+  right: 28px;                                                  /* tail near bubble's right edge, above her head */
+  bottom: -8px;                                                  /* peeks below the bubble */
   width: 14px; height: 14px;
   background: var(--bone);
   border-right: 1.5px solid var(--gold);
   border-bottom: 1.5px solid var(--gold);
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
+.chatbot-callout::before { content: none; }                   /* clear any prior tail rule */
 
 @keyframes chatbot-callout-bob {
   0%, 100% { transform: translateY(0); }
@@ -1810,11 +1814,13 @@ footer.mega {
     border-radius: 18px 18px 0 0;
     border-bottom: 0;
   }
-  .chatbot-launcher { width: 220px; height: 260px; }
+  .chatbot-launcher { width: 176px; height: 208px; }   /* ~20% smaller than original 220×260 */
   .chatbot-callout {
-    right: 120px; bottom: 200px;
+    right: 32px; bottom: 222px;                          /* sits above her smaller head */
     padding: 8px 14px; font-size: 13.5px;
+    border-radius: 12px;
   }
+  .chatbot-callout::after { right: 22px; bottom: -7px; width: 12px; height: 12px; }
 }
 
 /* --- Reduced motion ---------------------------------------------------- */
