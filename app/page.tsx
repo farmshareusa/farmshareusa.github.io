@@ -100,7 +100,7 @@ export default function HomePage() {
             </div>
             <div className="sol-art reveal d2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/Image_4A.png" alt="A family walking together through their backyard garden at sunset" />
+              <img src="/images/owners.png" alt="Two women relaxing with lemonade on a homestead patio while two men tend the garden beds at golden hour behind them" />
             </div>
           </div>
         </div>
