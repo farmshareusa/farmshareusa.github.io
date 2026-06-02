@@ -1398,6 +1398,22 @@ footer.mega {
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+/* --- Scroll-reveal: hide launcher + callout while the hero is in view -- */
+/* Toggled by ChatbotMascot via .is-revealed / .is-hidden on .chatbot-root.
+   We gate the launcher + callout only (the panel still mounts when open). */
+.chatbot-root .chatbot-launcher,
+.chatbot-root .chatbot-callout {
+  transition: opacity .3s ease, transform .3s ease, visibility 0s linear 0s;
+}
+.chatbot-root.is-hidden .chatbot-launcher,
+.chatbot-root.is-hidden .chatbot-callout {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s;
+}
+
 /* --- Launcher — Elizabeth IS the button ------------------------------- */
 /* No circle, no ring, no circular crop. A waist-up transparent figure
    floating against a soft green haze. */
@@ -1836,4 +1852,9 @@ footer.mega {
   .chatbot-cta { transition: none; }
   .chatbot-callout:hover { transform: none; }
   .chatbot-launcher:hover { transform: none; }
+  /* Scroll-reveal: snap instead of fade/slide */
+  .chatbot-root .chatbot-launcher,
+  .chatbot-root .chatbot-callout { transition: none; }
+  .chatbot-root.is-hidden .chatbot-launcher,
+  .chatbot-root.is-hidden .chatbot-callout { transform: none; transition: none; }
 }
