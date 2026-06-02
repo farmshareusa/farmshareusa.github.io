@@ -12,11 +12,13 @@ export function SiteFooter() {
             <a className="lockup brand-lockup" href="/" aria-label="FarmShare USA home">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="brand-logo"
-                src="/logos/farmshare-logo-horizontal-light.svg"
-                alt="FarmShare USA"
-                width={260}
-                height={80}
+                className="foot-emblem"
+                src="/logos/farmshare-emblem-footer.png"
+                alt="FarmShare USA — Grow Food. Build Community. Live Freely."
+                width={730}
+                height={874}
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <p>Grow Food. Build Community. Live Freely.</p>
