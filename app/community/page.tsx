@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { LeadCapture } from '@/components/LeadCapture';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Community — The Movement, Not a Forum',
+  title: 'The Free Community — The Heart of FarmShare USA',
   description:
-    'A national community of homesteaders, suburban growers, and co-op builders — local circles, monthly workshops, and the conversation that keeps you going.',
+    'The free FarmShare community is the heart of the movement. Get weekly posts, intro education, basic guides, public live streams, and the people who keep you going — at no cost.',
 };
 
 export default function CommunityPage() {
@@ -18,24 +19,24 @@ export default function CommunityPage() {
         <div className="wrap">
           <div className="ph-grid">
             <div className="reveal">
-              <span className="eyebrow">Community</span>
+              <span className="eyebrow">The Free Community</span>
               <h1>
-                Independence,<br />
+                The heart of<br />
                 <em style={{ fontStyle: 'italic', color: 'var(--gold-bright)', fontWeight: 420 }}>
-                  together.
+                  FarmShare USA.
                 </em>
               </h1>
               <p className="lede">
-                The hard part of homesteading isn&apos;t the work — it&apos;s the loneliness of doing
-                it alone. FarmShare Community is the back-channel: monthly workshops, local
-                circles, founding-cohort group chats, and people who get it.
+                Homesteading is hard alone. The free FarmShare community is the back-channel that
+                keeps you moving — weekly posts, intro education, basic guides, public live streams,
+                and the people who actually get it. Free, forever.
               </p>
               <div className="cta-row">
-                <a href="#what" className="btn btn-primary">
+                <a href={siteConfig.communityUrl} className="btn btn-primary">
                   <svg style={{ color: 'var(--green-deep)' }} aria-hidden="true"><use href="#mark" /></svg>
-                  See What&apos;s Inside
+                  {siteConfig.communityCtaLabel}
                 </a>
-                <a href="/start/" className="btn btn-secondary">Join Free</a>
+                <a href="/start/" className="btn btn-secondary">Get the Free 30-Day Plan</a>
               </div>
             </div>
             <div className="ph-art reveal d1">
@@ -100,6 +101,30 @@ export default function CommunityPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== WHAT YOU GET FREE ============== */}
+      <section className="band" id="free" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head center reveal">
+            <span className="eyebrow center">What you get free</span>
+            <h2 className="sec-title">Free, forever — the front door to the movement.</h2>
+          </div>
+          <ul className="free-list reveal d1">
+            <li><span className="tick" aria-hidden="true">✓</span> Access to the FarmShare community</li>
+            <li><span className="tick" aria-hidden="true">✓</span> Weekly community posts</li>
+            <li><span className="tick" aria-hidden="true">✓</span> Intro homesteading education</li>
+            <li><span className="tick" aria-hidden="true">✓</span> Basic how-to guides</li>
+            <li><span className="tick" aria-hidden="true">✓</span> Public live streams</li>
+            <li><span className="tick" aria-hidden="true">✓</span> Events &amp; announcements</li>
+          </ul>
+          <div className="reveal d2" style={{ textAlign: 'center', marginTop: 28 }}>
+            <a href={siteConfig.communityUrl} className="btn btn-primary">
+              <svg style={{ color: 'var(--green-deep)' }} aria-hidden="true"><use href="#mark" /></svg>
+              {siteConfig.communityCtaLabel}
+            </a>
           </div>
         </div>
       </section>
