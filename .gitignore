@@ -41,6 +41,10 @@ next-env.d.ts
 # internal docs (not for public repo)
 CLAUDE.md
 FarmShareUSA_Plan.txt
+.business/
+Brand_Realignment/
+BRAND-AUDIT_*.md
+CODEX-PROMPT_*.md
 
 # design handoff bundle (extracted locally for reference only)
 .design-bundle/

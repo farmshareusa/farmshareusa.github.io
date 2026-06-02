@@ -108,23 +108,13 @@ export function HomeHero() {
         </div>
 
         <div className="hero-seal germ">
-          <svg viewBox="0 0 128 128" aria-hidden="true">
-            <circle cx="64" cy="64" r="62" fill="var(--green)" />
-            <circle cx="64" cy="64" r="58" fill="none" stroke="var(--bone)" strokeWidth="1" opacity=".5" />
-            <circle cx="64" cy="64" r="53" fill="none" stroke="var(--bone)" strokeWidth="2.4" />
-            <g transform="translate(40 28) scale(.48)" style={{ color: 'var(--gold)' }}>
-              <use href="#mark" />
-            </g>
-            <path id="seal-arc" d="M64 64 m-41 0 a41 41 0 1 1 82 0" fill="none" />
-            <text fontFamily="JetBrains Mono,monospace" fontSize="8.4" letterSpacing="3.1" fill="var(--bone)">
-              <textPath href="#seal-arc" startOffset="5%">FARMSHARE·USA·CERTIFIED</textPath>
-            </text>
-            <g fill="var(--gold)">
-              <use href="#star" x="52" y="86" width="9" height="9" />
-              <use href="#star" x="60" y="88" width="9" height="9" />
-              <use href="#star" x="68" y="86" width="9" height="9" />
-            </g>
-          </svg>
+          <div className="hero-medallion">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/farm-emblem.png"
+              alt="FarmShare USA emblem — a backyard homestead with garden, greenhouse, orchard, water tank and solar power"
+            />
+          </div>
         </div>
       </div>
     </section>

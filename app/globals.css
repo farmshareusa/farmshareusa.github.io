@@ -396,6 +396,27 @@ header.site .hdr-cta .btn-primary:focus-visible {
 }
 .hero-seal svg { width: 120px; height: 120px; }
 
+/* Farm-scene emblem medallion — bone disc + clean green + gold double hairline */
+.hero-medallion {
+  width: 138px; height: 138px;
+  border-radius: 50%;
+  background: var(--bone);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow:
+    0 0 0 1.5px color-mix(in oklab, var(--gold) 90%, transparent),
+    0 0 0 4px var(--bone),
+    0 0 0 5.5px var(--green);
+}
+.hero-medallion img {
+  width: 138px; height: 138px;
+  border-radius: 50%;
+  display: block;
+}
+@media (max-width: 860px) {
+  .hero-medallion { width: 104px; height: 104px; }
+  .hero-medallion img { width: 104px; height: 104px; }
+}
+
 .germ .draw {
   stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
   animation: drawIn 2.4s cubic-bezier(.4,0,.2,1) forwards;
