@@ -1535,7 +1535,7 @@ footer.mega {
 .chatbot-callout {
   position: absolute;
   right: 55px;                                                 /* horizontally centered roughly over Elizabeth's head */
-  bottom: 300px;                                               /* just above her head with a small gap (was 350 — too far up) */
+  bottom: 220px;                                               /* hugs her head — figure is landscape-aspect (773×540), so her head sits ~130px above launcher bottom */
   z-index: 5;                                                  /* ABOVE the launcher figure */
   display: inline-flex; align-items: center;
   padding: 10px 16px;
@@ -1882,7 +1882,7 @@ footer.mega {
   }
   .chatbot-launcher { width: 176px; height: 208px; }   /* ~20% smaller than original 220×260 */
   .chatbot-callout {
-    right: 24px; bottom: 184px;                          /* close above her smaller head with a small gap */
+    right: 24px; bottom: 138px;                          /* hugs her smaller head — mirrors desktop offset for the 176×208 mobile launcher */
     padding: 8px 14px; font-size: 13.5px;
     border-radius: 12px;
   }
