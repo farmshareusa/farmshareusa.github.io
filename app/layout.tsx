@@ -5,6 +5,7 @@ import { EngravedDefs } from '@/components/EngravedDefs';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteClient } from '@/components/SiteClient';
+import { ChatbotMascot } from '@/components/ChatbotMascot';
 import { Analytics } from '@/components/Analytics';
 import './globals.css';
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <SiteFooter />
         <SiteClient />
+        <ChatbotMascot />
         <Analytics />
       </body>
     </html>
