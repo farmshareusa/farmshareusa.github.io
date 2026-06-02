@@ -1,3 +1,5 @@
+import { siteConfig } from '@/config/site';
+
 export function SiteFooter() {
   return (
     <footer className="mega">
@@ -45,8 +47,10 @@ export function SiteFooter() {
           </div>
           <div>
             <h5>Join the Movement</h5>
+            <a href={siteConfig.communityUrl} className="foot-cta-primary">
+              {siteConfig.communityCtaLabel}
+            </a>
             <a href="/start/">Free 30-Day Plan</a>
-            <a href="/community/">Community</a>
             <a href="/about/">About</a>
             <a href="/contact/">Contact</a>
             <div className="foot-trust" style={{ marginTop: 16 }}>

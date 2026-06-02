@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { siteConfig } from '@/config/site';
 
 export function HomeHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -63,17 +64,12 @@ export function HomeHero() {
               farm co-ops — no matter where you live, from a city balcony to five suburban acres.
             </p>
             <div className="cta-row">
-              <a href="/start/" className="btn btn-primary">
+              <a href={siteConfig.communityUrl} className="btn btn-primary">
                 <svg style={{ color: 'var(--green-deep)' }} aria-hidden="true"><use href="#mark" /></svg>
-                Get the 30-Day Plan
+                {siteConfig.communityCtaLabel}
               </a>
-              <a href="#solution" className="btn btn-ghost btn-play">
-                <span>
-                  <svg viewBox="0 0 9 9" fill="currentColor" aria-hidden="true">
-                    <path d="M1 0.5 L8 4.5 L1 8.5 Z" />
-                  </svg>
-                </span>
-                Watch How It Works
+              <a href="/start/" className="btn btn-secondary">
+                Get the Free 30-Day Plan
               </a>
             </div>
             <div className="trust">

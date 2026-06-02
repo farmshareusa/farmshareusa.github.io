@@ -1,3 +1,5 @@
+import { siteConfig } from '@/config/site';
+
 export function SiteHeader() {
   return (
     <header className="site hero-mode" id="hdr">
@@ -26,7 +28,7 @@ export function SiteHeader() {
           <a href="/learn/">Learn</a>
         </nav>
         <div className="hdr-cta">
-          <a href="/start/" className="btn btn-primary">Get Started Free</a>
+          <a href={siteConfig.communityUrl} className="btn btn-primary">{siteConfig.communityCtaLabel}</a>
           <button className="burger" aria-label="Menu">
             <span></span>
             <span></span>

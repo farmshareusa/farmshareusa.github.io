@@ -2,6 +2,7 @@ import { HomeHero } from '@/components/HomeHero';
 import { LeadCapture } from '@/components/LeadCapture';
 import { MembershipTiers } from '@/components/MembershipTiers';
 import { CoopMap } from '@/components/CoopMap';
+import { siteConfig } from '@/config/site';
 
 export default function HomePage() {
   return (
@@ -348,9 +349,13 @@ export default function HomePage() {
             growing down the road.
           </p>
           <div className="cta-row reveal d2">
-            <a href="/start/" className="btn btn-primary" style={{ fontSize: 16, padding: '17px 32px' }}>
+            <a
+              href={siteConfig.communityUrl}
+              className="btn btn-primary"
+              style={{ fontSize: 16, padding: '17px 32px' }}
+            >
               <svg style={{ color: 'var(--green-deep)' }} aria-hidden="true"><use href="#mark" /></svg>
-              Get Started Free
+              {siteConfig.communityCtaLabel}
             </a>
             <a href="/membership/" className="btn btn-secondary">See Membership</a>
           </div>
