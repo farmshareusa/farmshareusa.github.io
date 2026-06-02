@@ -111,7 +111,7 @@ export function HomeHero() {
           <div className="hero-medallion">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/farm-emblem.png"
+              src="/images/farm-emblem.png?v=2026-06-02"
               alt="FarmShare USA emblem — a backyard homestead with garden, greenhouse, orchard, water tank and solar power"
             />
           </div>
