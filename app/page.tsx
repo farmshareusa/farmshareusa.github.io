@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">Act I · The Fragile System</span>
-            <h2 className="sec-title">The old food system was never built for you.</h2>
+            <h2 className="sec-title">The current food system is built to last on shelves — not to nourish your family.</h2>
             <p className="lede">
               Three companies control most of what reaches your plate. When the chain breaks, you
               feel it first — in prices, in quality, in the distance between your family and real
