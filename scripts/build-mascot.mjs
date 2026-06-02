@@ -22,6 +22,7 @@ const SRC = path.join(ROOT, 'assets', 'mascot', 'elizabeth-greenscreen.png');
 const OUT_DIR = path.join(ROOT, 'public', 'images');
 const OUT_FULL = path.join(OUT_DIR, 'mascot-elizabeth-full.png');
 const OUT_AVATAR = path.join(OUT_DIR, 'mascot-elizabeth-avatar.png');
+const OUT_LAUNCHER = path.join(OUT_DIR, 'mascot-elizabeth-launcher.png');
 
 // Tuning — the greenscreen on Elizabeth is flat and saturated, and there is
 // no green on her shirt (blue), apron (cream), hair (blonde), or skin.
@@ -29,6 +30,9 @@ const GREEN_DOMINANCE_TOL = 28; // g must exceed BOTH r and b by at least this
 const EDGE_DOMINANCE_TOL = 6;   // softer threshold for despill pass
 const FULL_TARGET_HEIGHT = 900;
 const AVATAR_SIZE = 320;
+const LAUNCHER_TARGET_HEIGHT = 540; // ~520-560 px tall, retina-crisp
+const LAUNCHER_WAIST_RATIO = 0.62;  // top 62% of opaque content = head -> waist
+const LAUNCHER_FEATHER_RATIO = 0.13; // bottom 13% fades to fully transparent
 
 async function fileExists(p) {
   try {
@@ -191,6 +195,64 @@ async function buildAvatar(keyedBuf) {
   return { width: AVATAR_SIZE, height: AVATAR_SIZE };
 }
 
+async function buildLauncher(keyedBuf) {
+  // Waist-up crop: tight bbox, then keep the top LAUNCHER_WAIST_RATIO of its
+  // content height. Width stays the full subject width.
+  const trimmedBuf = await sharp(keyedBuf).png().toBuffer();
+  const bbox = await findOpaqueBbox(trimmedBuf);
+  if (!bbox) throw new Error('No opaque pixels for launcher crop.');
+
+  const waistHeight = Math.round(bbox.height * LAUNCHER_WAIST_RATIO);
+  const cropped = await sharp(trimmedBuf)
+    .extract({
+      left: bbox.left,
+      top: bbox.top,
+      width: bbox.width,
+      height: waistHeight,
+    })
+    .png()
+    .toBuffer();
+
+  // Feather the bottom band with a vertical alpha gradient so the waist
+  // dissolves with no hard edge. We composite a same-size grayscale ramp
+  // mask via blend: 'dest-in' — solid white at the top means "keep",
+  // black at the bottom means "knock out alpha".
+  const meta = await sharp(cropped).metadata();
+  const w = meta.width;
+  const h = meta.height;
+  const featherPx = Math.round(h * LAUNCHER_FEATHER_RATIO);
+  const solidTop = h - featherPx;
+
+  const svgMask = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="${(solidTop / h).toFixed(4)}" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="url(#g)"/>
+</svg>`;
+
+  const feathered = await sharp(cropped)
+    .ensureAlpha()
+    .composite([{ input: Buffer.from(svgMask), blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+
+  // Resize to retina-crisp launcher height; width scales proportionally.
+  const scale = LAUNCHER_TARGET_HEIGHT / h;
+  const outWidth = Math.round(w * scale);
+
+  await sharp(feathered)
+    .resize({ width: outWidth, height: LAUNCHER_TARGET_HEIGHT, fit: 'fill' })
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
+    .toFile(OUT_LAUNCHER);
+
+  return { width: outWidth, height: LAUNCHER_TARGET_HEIGHT };
+}
+
 async function main() {
   if (!(await fileExists(SRC))) {
     console.warn(`[build-mascot] source not found at ${path.relative(ROOT, SRC)} — skipping (build will still pass).`);
@@ -208,6 +270,9 @@ async function main() {
 
   const avatar = await buildAvatar(keyedBuf);
   console.log(`[build-mascot] wrote ${path.relative(ROOT, OUT_AVATAR)} — ${avatar.width} x ${avatar.height}`);
+
+  const launcher = await buildLauncher(keyedBuf);
+  console.log(`[build-mascot] wrote ${path.relative(ROOT, OUT_LAUNCHER)} — ${launcher.width} x ${launcher.height}`);
 }
 
 main().catch((err) => {
