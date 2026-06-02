@@ -71,8 +71,10 @@ export function SiteFooter() {
           <div className="foot-trust">
             <a href="/about/">About</a>
             <a href="/contact/">Contact</a>
-            <a href="/contact/">Privacy</a>
-            <a href="/contact/">Terms</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <a href="/disclaimers/">Disclaimers</a>
+            <a href="/community-guidelines/">Community Guidelines</a>
           </div>
         </div>
       </div>

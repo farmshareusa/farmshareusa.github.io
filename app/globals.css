@@ -785,6 +785,62 @@ footer.mega {
 }
 .foot-grid a.foot-cta-primary:hover { color: var(--gold-bright); }
 
+/* ===========================================================================
+   LEGAL PAGES — plain-prose layout (Privacy, Terms, Disclaimers, Conduct)
+   =========================================================================== */
+.legal-prose {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 16.5px;
+  line-height: 1.72;
+  color: var(--ink);
+}
+.legal-prose h2 {
+  font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  font-size: 28px;
+  color: var(--green-deep);
+  margin: 44px 0 12px;
+  letter-spacing: -.01em;
+}
+.legal-prose h3 {
+  font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  font-size: 21px;
+  color: var(--forest);
+  margin: 28px 0 8px;
+}
+.legal-prose p { margin: 0 0 14px; color: color-mix(in oklab, var(--ink) 86%, transparent); }
+.legal-prose ul, .legal-prose ol { padding-left: 22px; margin: 0 0 16px; }
+.legal-prose li { margin-bottom: 6px; }
+.legal-prose a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose a:hover { color: var(--grass); }
+.legal-prose strong { color: var(--green-deep); }
+.legal-prose hr {
+  border: none;
+  border-top: 1px solid var(--line-soft);
+  margin: 36px 0;
+}
+.legal-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 60%, transparent);
+  margin: 0 0 28px;
+}
+.legal-notice {
+  background: color-mix(in oklab, var(--gold) 14%, var(--bone));
+  border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  border-left: 4px solid var(--gold);
+  border-radius: 2px;
+  padding: 18px 22px;
+  margin: 0 auto 36px;
+  max-width: 760px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--green-deep);
+}
+.legal-notice strong { color: var(--green-deep); }
+
 /* Community page — "What you get free" list */
 .free-list {
   list-style: none;
