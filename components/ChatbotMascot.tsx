@@ -327,25 +327,20 @@ export function ChatbotMascot() {
         </div>
       )}
 
-      {/* LAUNCHER */}
+      {/* LAUNCHER — Elizabeth IS the button (no circle) */}
       <button
         ref={launcherRef}
         type="button"
-        className="chatbot-launcher"
+        className={`chatbot-launcher${isOpen ? ' is-open' : ''}`}
         aria-label="Open chat with Elizabeth"
         aria-expanded={isOpen}
         aria-controls={headingId}
         onClick={() => (isOpen ? closePanel() : openPanel())}
       >
-        <span className="chatbot-launcher-ring" aria-hidden="true" />
+        <span className="chatbot-launcher-glow" aria-hidden="true" />
         <span className="chatbot-launcher-img">
-          <Image
-            src="/images/mascot-elizabeth-avatar.png"
-            alt=""
-            width={128}
-            height={128}
-            priority={false}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/mascot-elizabeth-launcher.png" alt="" />
         </span>
       </button>
 
