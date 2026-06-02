@@ -18,8 +18,6 @@ import { isValidEmail, submitLead } from '@/lib/leadSubmit';
 
 const QA = qaData as ChatbotQA;
 
-const GREET_KEY = 'fs_chat_greeting_dismissed_v1';
-const GREET_DELAY_MS = 2500;
 const TYPING_DELAY_MS = 600;
 const LEAD_NUDGE_AFTER = 3; // user-message count
 
@@ -94,7 +92,7 @@ export function ChatbotMascot() {
 
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [greetVisible, setGreetVisible] = useState(false);
+  const [revealed, setRevealed] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -106,36 +104,31 @@ export function ChatbotMascot() {
   const transcriptRef = useRef<HTMLDivElement | null>(null);
   const reducedMotionRef = useRef(false);
 
-  // Mount + greeting bubble (sessionStorage-guarded, SSR-safe)
+  // Mount + read reduced-motion preference (SSR-safe)
   useEffect(() => {
     setMounted(true);
     if (typeof window === 'undefined') return;
-
     if (typeof window.matchMedia === 'function') {
       reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
-
-    let dismissed = false;
-    try {
-      dismissed = window.sessionStorage.getItem(GREET_KEY) === '1';
-    } catch {
-      dismissed = false;
-    }
-
-    if (dismissed) return;
-
-    const t = window.setTimeout(() => setGreetVisible(true), GREET_DELAY_MS);
-    return () => window.clearTimeout(t);
   }, []);
 
-  const dismissGreeting = useCallback(() => {
-    setGreetVisible(false);
+  // Scroll-reveal: launcher + callout stay hidden while the hero (top ~60%
+  // of the first screen) is in view. Fade in once the visitor scrolls past
+  // that threshold; fade out again if they scroll back to the very top.
+  useEffect(() => {
     if (typeof window === 'undefined') return;
-    try {
-      window.sessionStorage.setItem(GREET_KEY, '1');
-    } catch {
-      // ignore
-    }
+    const check = () => {
+      const threshold = window.innerHeight * 0.6;
+      setRevealed(window.scrollY > threshold);
+    };
+    check(); // handle page loads that are already scrolled
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+    };
   }, []);
 
   // Auto-scroll transcript on new messages / typing changes
@@ -153,7 +146,6 @@ export function ChatbotMascot() {
   }, [isOpen]);
 
   const openPanel = useCallback(() => {
-    dismissGreeting();
     setIsOpen(true);
     track('chatbot_open');
     setMessages((prev) => {
@@ -167,7 +159,7 @@ export function ChatbotMascot() {
         },
       ];
     });
-  }, [dismissGreeting]);
+  }, []);
 
   const closePanel = useCallback(() => {
     setIsOpen(false);
@@ -311,20 +303,17 @@ export function ChatbotMascot() {
   if (!mounted) return null;
 
   return (
-    <div className="chatbot-root" aria-live="off">
-      {/* GREETING BUBBLE */}
-      {greetVisible && !isOpen && (
-        <div className="chatbot-greet" role="status">
-          <button
-            type="button"
-            className="chatbot-greet-dismiss"
-            aria-label="Dismiss greeting"
-            onClick={dismissGreeting}
-          >
-            ×
-          </button>
-          <p>Hi, I&apos;m Elizabeth — ask me anything about FarmShare USA!</p>
-        </div>
+    <div className={`chatbot-root ${revealed ? 'is-revealed' : 'is-hidden'}`} aria-live="off">
+      {/* CALL-OUT — persistent invite to click Elizabeth */}
+      {!isOpen && (
+        <button
+          type="button"
+          className="chatbot-callout"
+          aria-label="Open chat with Elizabeth"
+          onClick={openPanel}
+        >
+          Ask me anything!
+        </button>
       )}
 
       {/* LAUNCHER — Elizabeth IS the button (no circle) */}
