@@ -232,8 +232,24 @@ export default function HomePage() {
               <div className="ba reveal d1">
                 <span className="lbl">Before / After</span>
                 <div className="row">
-                  <div className="cell"><span className="fn">Your story</span></div>
-                  <div className="cell"><span className="fn">Your first harvest</span></div>
+                  <div className="cell">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/before_v1.png"
+                      alt="A plain suburban backyard with an empty lawn before transformation"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="cell">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/after_v1.png"
+                      alt="The same suburban backyard transformed into a thriving four-season vegetable garden"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
                 <span className="cap">Bare lawn → four-season garden</span>
               </div>
