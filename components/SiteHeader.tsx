@@ -24,6 +24,7 @@ export function SiteHeader() {
         <nav aria-label="Primary">
           <a href="/#solution">How It Works</a>
           <a href="/co-ops/">Co-ops</a>
+          <a href="/homestead-real-estate/">Homestead Real Estate</a>
           <a href="/membership/">Membership</a>
           <a href="/learn/">Learn</a>
         </nav>

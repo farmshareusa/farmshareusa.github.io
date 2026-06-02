@@ -11,7 +11,7 @@ const ROUTES = [
   '/vendors',
   '/health',
   '/community',
-  '/homestead-design',
+  '/homestead-real-estate',
   '/learn',
   '/about',
   '/contact',

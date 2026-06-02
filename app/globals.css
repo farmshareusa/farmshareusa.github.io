@@ -208,7 +208,7 @@ header.site.scrolled .brand-lockup .brand-logo { height: 50px; }
 
 /* serif nav */
 header.site nav {
-  display: flex; gap: 26px;
+  display: flex; gap: 22px;
   position: relative; z-index: 2;
 }
 header.site nav a {
@@ -500,9 +500,20 @@ section.green.cool {
 @media (max-width: 600px) {
   .pillars.pillars--four { grid-template-columns: 1fr; gap: 18px; }
 }
-a.pillar.pillar--icon {
+
+/* Six-card icon-led grid (3 across desktop, 2 tablet, 1 mobile) */
+.pillars.pillars--six {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .pillars.pillars--six { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+}
+@media (max-width: 600px) {
+  .pillars.pillars--six { grid-template-columns: 1fr; gap: 18px; }
+}
+.pillar.pillar--icon {
   display: block;
-  text-decoration: none;
   color: var(--ink);
   background: var(--bone);
   border: 1px solid var(--line-soft);
@@ -512,6 +523,7 @@ a.pillar.pillar--icon {
   box-shadow: 0 1px 0 color-mix(in oklab, var(--forest) 6%, transparent);
   transition: transform .25s ease, box-shadow .25s ease, border-top-color .25s ease;
 }
+a.pillar.pillar--icon { text-decoration: none; }
 a.pillar.pillar--icon:hover {
   transform: translateY(-4px);
   box-shadow: 0 22px 44px -28px rgba(23,58,34,.55);

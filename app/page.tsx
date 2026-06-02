@@ -133,7 +133,7 @@ export default function HomePage() {
 
             <a
               className="pillar pillar--icon reveal d1"
-              href="/homestead-design/"
+              href="/homestead-real-estate/"
               aria-label="Design — Lay out your land for real production"
             >
               <div className="ic">
