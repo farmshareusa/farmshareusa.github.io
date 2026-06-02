@@ -15,6 +15,10 @@ const ROUTES = [
   '/learn',
   '/about',
   '/contact',
+  '/privacy',
+  '/terms',
+  '/disclaimers',
+  '/community-guidelines',
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
