@@ -888,8 +888,12 @@ footer.mega {
   color: color-mix(in oklab, var(--bone) 72%, transparent);
   padding: 80px 0 40px; position: relative;
 }
-.foot-orn { display: flex; justify-content: center; margin-bottom: 54px; color: var(--gold); }
-.foot-orn svg { width: min(560px, 80%); height: auto; }
+.foot-orn { display: flex; justify-content: flex-end; margin-bottom: 54px; color: var(--gold); }
+.foot-orn svg { width: min(420px, 60%); height: auto; }
+@media (max-width: 640px) {
+  .foot-orn { justify-content: center; }
+  .foot-orn svg { width: 80%; }
+}
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 48px; }
 .foot-grid h5 {
   font-family: 'JetBrains Mono', monospace; font-size: 11px;
@@ -997,6 +1001,15 @@ footer.mega {
 }
 .foot-brand .lockup .nm { color: var(--bone); }
 .foot-brand .lockup img.logo-png { height: 56px; width: auto; filter: brightness(1.05); }
+.foot-brand .foot-emblem {
+  width: 200px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.45));
+}
+@media (max-width: 640px) {
+  .foot-brand .foot-emblem { width: 160px; }
+}
 .foot-brand p { font-size: 14px; max-width: 34ch; margin: 18px 0 22px; }
 .foot-news { display: flex; gap: 8px; }
 .foot-news input {
