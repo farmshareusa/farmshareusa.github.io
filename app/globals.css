@@ -400,11 +400,11 @@ header.site .hdr-cta .btn-primary:focus-visible {
 .hero-medallion {
   width: 138px; height: 138px;
   border-radius: 50%;
-  background: var(--bone);
+  background: var(--bone-2);
   display: flex; align-items: center; justify-content: center;
   box-shadow:
     0 0 0 1.5px color-mix(in oklab, var(--gold) 90%, transparent),
-    0 0 0 4px var(--bone),
+    0 0 0 4px var(--bone-2),
     0 0 0 5.5px var(--green);
 }
 .hero-medallion img {
