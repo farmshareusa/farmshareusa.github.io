@@ -2,6 +2,7 @@ import { HomeHero } from '@/components/HomeHero';
 import { LeadCapture } from '@/components/LeadCapture';
 import { MembershipTiers } from '@/components/MembershipTiers';
 import { CoopMap } from '@/components/CoopMap';
+import { ZoomImage } from '@/components/ZoomImage';
 import { siteConfig } from '@/config/site';
 
 export default function HomePage() {
@@ -233,21 +234,15 @@ export default function HomePage() {
                 <span className="lbl">Before / After</span>
                 <div className="row">
                   <div className="cell">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <ZoomImage
                       src="/images/before_v1.png"
                       alt="A plain suburban backyard with an empty lawn before transformation"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
                   <div className="cell">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <ZoomImage
                       src="/images/after_v1.png"
                       alt="The same suburban backyard transformed into a thriving four-season vegetable garden"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
                 </div>

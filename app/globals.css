@@ -665,14 +665,56 @@ a.pillar.pillar--icon:hover .arrow { gap: 12px; color: var(--grass); }
   background: repeating-linear-gradient(135deg, var(--bone-2), var(--bone-2) 9px, transparent 9px, transparent 18px), var(--bone);
   border: 1px solid var(--line-soft);
   display: flex; align-items: flex-end; padding: 10px; min-height: 120px;
-  overflow: hidden; position: relative;
+  overflow: visible; position: relative;
 }
-.ba .cell > img {
+.ba .cell:has(.zoom-btn.is-active) {
+  z-index: 10;
+  border-color: transparent;
+}
+.ba .cell > .zoom-btn {
+  position: absolute; inset: 0;
+  margin: 0; padding: 0; border: 0; background: transparent;
+  appearance: none;
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+.ba .cell > .zoom-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.ba .cell > .zoom-btn > img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   border-radius: 2px;
   display: block;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;
+  will-change: transform;
+}
+.ba .cell > .zoom-btn.is-active {
+  cursor: zoom-out;
+  overflow: visible;
+}
+.ba .cell > .zoom-btn.is-active > img {
+  transform: scale(1.5);
+  box-shadow: 0 30px 70px -30px rgba(11,24,18,.55);
+  animation: zoomDrift 7s ease-in-out .5s infinite alternate;
+}
+@keyframes zoomDrift {
+  from { transform: scale(1.5) translate(-1.2%, -1%); }
+  to   { transform: scale(1.55) translate(1.2%, 1%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ba .cell > .zoom-btn > img { transition: none; }
+  .ba .cell > .zoom-btn.is-active > img {
+    transform: scale(1.2);
+    animation: none;
+  }
 }
 .ba .cell .fn {
   font-family: 'JetBrains Mono', monospace; font-size: 10px;
