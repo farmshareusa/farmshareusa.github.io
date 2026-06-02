@@ -293,7 +293,11 @@ header.site .hdr-cta .btn-primary:focus-visible {
   color: var(--green); z-index: 4; pointer-events: none;
 }
 .almanac.on-green .af-orn { color: var(--leaf); }
-.af-orn.top { top: -15px; }
+/* Top fleuron sits fully inside the frame, mirroring the bottom fleuron's
+   inset from the bottom inner rule. (Was top:-15px, which placed the
+   container above the frame top and overflow:hidden on .hero-frame
+   clipped the upper half of the SVG.) */
+.af-orn.top { top: 1px; }
 .af-orn.bot { bottom: -17px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
 .af-orn .fleuron {
   width: 88px; height: 30px; background: transparent;
