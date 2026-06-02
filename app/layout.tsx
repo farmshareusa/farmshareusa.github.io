@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Fraunces, Inter } from 'next/font/google';
+import { Fraunces, Inter, Baloo_2 } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import { EngravedDefs } from '@/components/EngravedDefs';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -20,6 +20,13 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+});
+
+const baloo = Baloo_2({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-baloo',
+  weight: ['500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +51,10 @@ export const metadata: Metadata = {
     images: ['/images/Image_S17.png'],
   },
   icons: {
-    icon: [{ url: '/icon.png', type: 'image/png', sizes: '512x512' }],
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
 };
@@ -60,7 +70,7 @@ const jsonLd = {
       description: siteConfig.description,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteConfig.url}/images/Logo_L1.png`,
+        url: `${siteConfig.url}/logos/farmshare-logo-horizontal.svg`,
       },
     },
     {
@@ -77,7 +87,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${baloo.variable}`}>
       <head>
         <script
           type="application/ld+json"

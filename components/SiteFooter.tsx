@@ -7,21 +7,17 @@ export function SiteFooter() {
         </div>
         <div className="foot-grid">
           <div className="foot-brand">
-            <a className="lockup" href="/">
+            <a className="lockup brand-lockup" href="/" aria-label="FarmShare USA home">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="logo-png"
-                src="/images/Logo_L5.png"
+                className="brand-logo"
+                src="/logos/farmshare-logo-horizontal-light.svg"
                 alt="FarmShare USA"
-                width="320"
-                height="80"
-                style={{ filter: 'brightness(1.05)' }}
+                width={260}
+                height={80}
               />
             </a>
-            <p>
-              The operating system for modern self-sufficiency. Independence, not isolation.
-              Resilience, not fear.
-            </p>
+            <p>Grow Food. Build Community. Live Freely.</p>
             <div className="foot-news">
               <input
                 type="email"
@@ -67,7 +63,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© MMXXVI FarmShare USA · The Living Almanac</span>
+          <span>© MMXXVI FarmShare USA · Grow Food. Build Community. Live Freely.</span>
           <div className="foot-trust">
             <a href="/about/">About</a>
             <a href="/contact/">Contact</a>
