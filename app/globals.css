@@ -120,52 +120,101 @@ a { color: inherit; text-decoration: none; }
   outline-offset: 3px;
 }
 
-/* ---------- header ---------- */
+/* ---------- header (editorial green masthead) ---------- */
 header.site {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--green);
+  box-shadow: 0 8px 28px -22px rgba(0,0,0,.55);
   transition: .35s;
-  background: transparent;
 }
 header.site .bar {
+  position: relative;
   display: flex; align-items: center; justify-content: space-between;
   height: var(--hdr); padding: 0 40px; max-width: 1400px; margin: 0 auto;
   transition: .35s;
+  z-index: 2;
 }
-header.site.scrolled {
-  background: color-mix(in oklab, var(--bone) 92%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line-soft);
-  box-shadow: 0 6px 24px -18px #000;
-}
-header.site nav { display: flex; gap: 30px; font-size: 14.5px; font-weight: 500; }
-header.site nav a { color: var(--ink); opacity: .82; transition: .2s; position: relative; }
-header.site nav a:hover { opacity: 1; color: var(--green); }
 header.site.hero-mode .bar { height: 84px; }
-header.site.hero-mode nav a { color: var(--ink); }
-.hdr-cta { display: flex; align-items: center; gap: 18px; }
+header.site.scrolled .bar { height: 64px; }
 
-.lockup { display: flex; align-items: center; gap: 12px; }
-.lockup .mk { width: 34px; height: 37px; flex: none; }
-.lockup img.logo-png {
-  height: 56px; width: auto;
-  filter: drop-shadow(0 1px 0 rgba(247,243,234,.4));
+/* engraved frame */
+.hdr-frame { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.hdr-outline {
+  position: absolute; inset: 14px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  opacity: .5;
+  box-shadow: inset 0 0 0 4px transparent,
+              inset 0 0 0 5px color-mix(in oklab, var(--gold) 30%, transparent);
 }
-header.site.scrolled .lockup img.logo-png { height: 44px; }
+.hdr-corner {
+  position: absolute; width: 42px; height: 42px;
+  color: var(--gold);
+  opacity: .95;
+}
+.hdr-corner.tl { top: 5px; left: 9px; }
+.hdr-corner.tr { top: 5px; right: 9px; transform: scaleX(-1); }
+.hdr-corner.bl { bottom: 5px; left: 9px; transform: scaleY(-1); }
+.hdr-corner.br { bottom: 5px; right: 9px; transform: scale(-1,-1); }
+
+/* logo (cream knockout) */
+.lockup {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+  position: relative; z-index: 2;
+}
+.lockup .mk { width: 34px; height: 41px; flex: none; color: var(--bone); }
+.lockup .wordmark { display: flex; flex-direction: column; line-height: 1; }
 .lockup .nm {
   font-family: var(--font-fraunces), 'Fraunces', serif;
-  font-weight: 600; font-size: 22px; color: var(--green); line-height: .8;
+  font-weight: 500; font-size: 24px;
+  color: var(--bone);
+  letter-spacing: .3px;
+  line-height: 1;
 }
 .lockup .usa {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: .42em; color: var(--clay); text-transform: uppercase;
-  margin-top: 4px; display: block;
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: .34em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.lockup .usa i {
+  width: 16px; height: 1px;
+  background: var(--gold);
+  display: inline-block;
 }
 
+/* serif nav */
+header.site nav {
+  display: flex; gap: 26px;
+  position: relative; z-index: 2;
+}
+header.site nav a {
+  font-family: var(--font-fraunces), 'Fraunces', serif;
+  font-size: 16px; font-weight: 400;
+  letter-spacing: .3px;
+  color: var(--bone);
+  opacity: .9;
+  transition: .2s;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid transparent;
+}
+header.site nav a:hover { opacity: 1; border-bottom-color: var(--gold); }
+header.site.hero-mode nav a { color: var(--bone); }
+
+/* CTA cluster + burger */
+.hdr-cta {
+  display: flex; align-items: center; gap: 18px;
+  position: relative; z-index: 2;
+}
 .burger {
   display: none; flex-direction: column; gap: 5px; cursor: pointer;
   background: none; border: none; padding: 8px;
 }
-.burger span { width: 24px; height: 2px; background: var(--ink); display: block; }
+.burger span { width: 24px; height: 2px; background: var(--bone); display: block; }
 
 /* ===========================================================================
    ENGRAVED ALMANAC FRAME — the signature element
@@ -617,6 +666,7 @@ footer.mega {
 }
 .foot-grid a:hover { color: var(--bone); }
 .foot-brand .lockup .nm { color: var(--bone); }
+.foot-brand .lockup img.logo-png { height: 56px; width: auto; filter: brightness(1.05); }
 .foot-brand p { font-size: 14px; max-width: 34ch; margin: 18px 0 22px; }
 .foot-news { display: flex; gap: 8px; }
 .foot-news input {
@@ -1081,6 +1131,7 @@ footer.mega {
 @media (max-width: 860px) {
   header.site nav { display: none; }
   .burger { display: flex; }
+  .hdr-corner.tr, .hdr-corner.br, .hdr-outline { display: none; }
   .hero { padding: calc(var(--hdr) + 14px) 12px 14px; }
   .hero-frame { flex-direction: column; }
   .hero-panel, .hero-photo { width: 100%; }
