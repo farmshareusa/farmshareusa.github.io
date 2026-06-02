@@ -79,7 +79,7 @@ export default function ContactPage() {
                 <div className="k">Consulting</div>
                 <h3>Book a homestead consult</h3>
                 <p>Land acquisition, plot design, or farm startup — request a free 30-minute discovery call.</p>
-                <a href="/homestead-design/#apply">Book a consult →</a>
+                <a href="/homestead-real-estate/#inquire">Book a consult →</a>
               </div>
             </div>
           </div>

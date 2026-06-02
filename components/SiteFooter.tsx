@@ -43,7 +43,7 @@ export function SiteFooter() {
             <a href="/co-ops/#apply">List Your Co-op</a>
             <a href="/vendors/">Certified Vendors</a>
             <a href="/health/">Health Partners</a>
-            <a href="/homestead-design/">Homestead Design</a>
+            <a href="/homestead-real-estate/">Homestead Real Estate</a>
           </div>
           <div>
             <h5>Join the Movement</h5>
