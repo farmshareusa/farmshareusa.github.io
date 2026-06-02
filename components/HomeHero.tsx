@@ -53,7 +53,7 @@ export function HomeHero() {
             </g>
           </svg>
           <div className="hero-content">
-            <span className="eyebrow">Est. MMXXVI · The Living Almanac</span>
+            <span className="eyebrow">Grow Food. Build Community. Live Freely.</span>
             <h1>
               <span className="l1">Feed your<br />family.</span>
               <span className="l2">Without relying on the system.</span>
