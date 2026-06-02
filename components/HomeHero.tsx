@@ -11,7 +11,7 @@ export function HomeHero() {
     const wm = document.querySelector('.hero-watermark');
     if (!RM) {
       if (seal) seal.classList.add('seal-rise');
-      if (wm) wm.classList.add('wm-rise');
+      if (wm) wm.classList.add('wm-draw');
       const v = videoRef.current;
       if (v && window.innerWidth > 860) v.play().catch(() => {});
     } else if (videoRef.current) {
@@ -44,8 +44,13 @@ export function HomeHero() {
 
         <div className="hero-panel">
           <div className="pa-grain"></div>
-          <svg className="hero-watermark germ" viewBox="0 0 100 110" aria-hidden="true">
-            <use href="#mark" />
+          <svg className="hero-watermark fs-sprout" viewBox="0 0 240 250" aria-hidden="true">
+            <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path className="fs-grow fs-ground" pathLength={1} d="M48 201 Q84 193 120 199 Q156 205 192 197" />
+              <path className="fs-grow fs-stem" pathLength={1} d="M122 200 c-9 2 -12 -9 -3 -12 c7 -2 9 6 3 9 C126 188 116 165 120 148 C121 142 120 138 120 134 C108 124 82 122 70 96 C62 80 76 66 92 76 C110 88 120 112 120 134 C124 124 146 118 166 116 C182 114 186 128 174 138 C160 150 130 150 120 138" />
+              <path className="fs-grow fs-vein1" pathLength={1} strokeWidth={2.2} d="M112 128 C100 116 92 104 84 90" />
+              <path className="fs-grow fs-vein2" pathLength={1} strokeWidth={2.2} d="M130 134 C144 130 156 127 168 123" />
+            </g>
           </svg>
           <div className="hero-content">
             <span className="eyebrow">Est. MMXXVI · The Living Almanac</span>
