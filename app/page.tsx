@@ -105,53 +105,91 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===================== 3 PILLARS ===================== */}
+      {/* ===================== 4 PILLARS — LEARN · DESIGN · CONNECT · OWN ===================== */}
       <section className="band" id="pillars" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="sec-head center reveal">
-            <span className="eyebrow center">The Three Pillars</span>
-            <h2 className="sec-title">Independence, in three moves.</h2>
+            <span className="eyebrow center">Learn · Design · Connect · Own</span>
+            <h2 className="sec-title">Four steps to a self-reliant life.</h2>
           </div>
-          <div className="pillars">
-            <div className="pillar reveal">
-              <div className="ph">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Image_S5.png" alt="Watering a thriving raised-bed vegetable garden at golden hour" />
+          <div className="pillars pillars--four">
+            <a
+              className="pillar pillar--icon reveal"
+              href="/learn/"
+              aria-label="Learn — Master the skills to grow, raise, and preserve real food"
+            >
+              <div className="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.8.78c-.36 2.4-1.7 13.83-9.7 16.15a6 6 0 0 1-3.2.1z" />
+                  <path d="M2 22 17 7" />
+                </svg>
               </div>
-              <div className="body">
-                <div className="ic"><svg aria-hidden="true"><use href="#i-grow" /></svg></div>
-                <div className="k">Pillar 01</div>
-                <h3>Grow Your Own Food</h3>
-                <p>Real food production for any space — soil, seed, water, harvest. Start where you are, this season.</p>
-                <a href="/start/">Start growing <span>→</span></a>
+              <div className="k">Pillar 01</div>
+              <h3>Learn</h3>
+              <p>Master the skills to grow, raise, and preserve real food — sequenced step by step, from your first seed to a four-season harvest.</p>
+              <span className="arrow">Start learning <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a
+              className="pillar pillar--icon reveal d1"
+              href="/homestead-design/"
+              aria-label="Design — Lay out your land for real production"
+            >
+              <div className="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m12.99 6.74 1.93 3.44" />
+                  <path d="M19.136 12a10 10 0 0 1-14.271 0" />
+                  <path d="m21 21-2.16-3.84" />
+                  <path d="m3 21 8.02-14.26" />
+                  <circle cx="12" cy="5" r="2" />
+                </svg>
               </div>
-            </div>
-            <div className="pillar reveal d1">
-              <div className="ph">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Image_S21.png" alt="A productive suburban backyard garden with raised beds" />
+              <div className="k">Pillar 02</div>
+              <h3>Design</h3>
+              <p>Lay out your land for real production — a balcony, a quarter-acre, or five acres — with a plan that actually fits your space.</p>
+              <span className="arrow">Plan your land <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a
+              className="pillar pillar--icon reveal d2"
+              href="/co-ops/"
+              aria-label="Connect — Join a nationwide community and find local farm co-ops"
+            >
+              <div className="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
               </div>
-              <div className="body">
-                <div className="ic"><svg aria-hidden="true"><use href="#i-systems" /></svg></div>
-                <div className="k">Pillar 02</div>
-                <h3>Build Independent Systems</h3>
-                <p>Water, energy, protein, and preservation that keep producing — even on a normal neighborhood lot.</p>
-                <a href="/courses/food-independence-blueprint/">See the blueprint <span>→</span></a>
+              <div className="k">Pillar 03</div>
+              <h3>Connect</h3>
+              <p>Join a nationwide community and find local farm co-ops to trade, share, and grow together.</p>
+              <span className="arrow">Find your co-op <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a
+              className="pillar pillar--icon reveal d3"
+              href="/membership/"
+              aria-label="Own — Build toward true independence — your homestead, your food, your future"
+            >
+              <div className="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="7.5" cy="15.5" r="5.5" />
+                  <path d="m21 2-9.6 9.6" />
+                  <path d="m15.5 7.5 3 3L22 7l-3-3" />
+                </svg>
               </div>
-            </div>
-            <div className="pillar reveal d2">
-              <div className="ph">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Image_S22.png" alt="Aerial view of a suburban neighborhood with productive backyard plots" />
-              </div>
-              <div className="body">
-                <div className="ic"><svg aria-hidden="true"><use href="#i-network" /></svg></div>
-                <div className="k">Pillar 03</div>
-                <h3>Join Local Food Networks</h3>
-                <p>Trade, share, and buy from a co-op network at your doorstep. Independence, together.</p>
-                <a href="/co-ops/">Find your co-op <span>→</span></a>
-              </div>
-            </div>
+              <div className="k">Pillar 04</div>
+              <h3>Own</h3>
+              <p>Build toward true independence — your homestead, your food, your future, in your own hands.</p>
+              <span className="arrow">Become a member <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+
+          <div className="pillars-foot reveal">
+            <p className="brand-line">Your Homestead. Your Future. Our Community.</p>
           </div>
         </div>
       </section>

@@ -454,6 +454,102 @@ section.green.cool {
 }
 .pillar a:hover { gap: 12px; }
 
+/* Four-pillar icon-led grid — LEARN · DESIGN · CONNECT · OWN */
+.pillars.pillars--four {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .pillars.pillars--four { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+}
+@media (max-width: 600px) {
+  .pillars.pillars--four { grid-template-columns: 1fr; gap: 18px; }
+}
+a.pillar.pillar--icon {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--bone);
+  border: 1px solid var(--line-soft);
+  border-top: 3px solid var(--grass);
+  border-radius: 2px;
+  padding: 32px 26px 30px;
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--forest) 6%, transparent);
+  transition: transform .25s ease, box-shadow .25s ease, border-top-color .25s ease;
+}
+a.pillar.pillar--icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -28px rgba(23,58,34,.55);
+  border-top-color: var(--leaf);
+}
+a.pillar.pillar--icon:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+.pillar.pillar--icon .ic {
+  position: static;
+  top: auto; right: auto;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--forest) 8%, var(--bone));
+  border: 1px solid color-mix(in oklab, var(--forest) 22%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 0 18px;
+  color: var(--forest);
+  box-shadow: none;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.pillar.pillar--icon .ic svg {
+  width: 28px; height: 28px;
+  color: var(--forest);
+}
+a.pillar.pillar--icon:hover .ic {
+  background: color-mix(in oklab, var(--leaf) 18%, var(--bone));
+  border-color: color-mix(in oklab, var(--grass) 40%, transparent);
+  color: var(--forest);
+}
+.pillar.pillar--icon .k {
+  color: var(--grass);
+  margin: 0 0 6px;
+}
+.pillar.pillar--icon h3 {
+  color: var(--green-deep);
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+.pillar.pillar--icon p {
+  color: color-mix(in oklab, var(--ink) 76%, transparent);
+  font-size: 15px;
+  margin: 0 0 18px;
+}
+.pillar.pillar--icon .arrow {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--forest);
+  display: inline-flex; gap: 8px;
+  transition: gap .2s ease, color .2s ease;
+}
+a.pillar.pillar--icon:hover .arrow { gap: 12px; color: var(--grass); }
+
+/* Pillars closing tagline band */
+.pillars-foot { margin-top: 48px; text-align: center; }
+.pillars-foot .brand-line {
+  font-family: var(--font-baloo), 'Baloo 2', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 13.5px;
+  color: var(--grass);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.pillar.pillar--icon,
+  .pillar.pillar--icon .ic,
+  .pillar.pillar--icon .arrow { transition: none; }
+  a.pillar.pillar--icon:hover { transform: none; }
+}
+
 /* social proof */
 .proof { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; margin-top: 20px; }
 .quote {
