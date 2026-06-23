@@ -34,6 +34,21 @@ export default function AboutPage() {
                 Modern Self-Sufficiency.
               </em>
             </h1>
+            <p
+              className="tagline"
+              style={{
+                margin: '18px auto 0',
+                fontFamily: 'var(--font-display, Fraunces), serif',
+                fontStyle: 'italic',
+                fontSize: 'clamp(18px, 2.4vw, 24px)',
+                lineHeight: 1.4,
+                color: 'color-mix(in oklab, var(--bone) 88%, transparent)',
+              }}
+            >
+              A movement{' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--gold-bright)' }}>rooted</em> in optimal
+              health, clean whole food, and independence.
+            </p>
             <p className="lede" style={{ margin: '20px auto 0' }}>
               FarmShare USA isn&apos;t a content brand. It&apos;s a movement built to move people
               from dependence on industrial food systems to self-sufficient, locally connected
